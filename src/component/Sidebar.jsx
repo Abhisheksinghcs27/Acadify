@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logout } from '../store/authSlice';
-import assignments from '../app/students/components/assigment.jsx';
+import { logout } from '../config/store/authSlice';
+
 
 const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen, userType = "student" }) => {
   const location = useLocation();
