@@ -132,29 +132,29 @@
 ## 📝 Registration Endpoints
 
 ### Register Student
-**POST** `http://localhost:5000/api/student/register`
+**POST** `http://localhost:3000/api/student/register`
 
 ### Register Teacher
-**POST** `http://localhost:5000/api/teacher/register`
+**POST** `http://localhost:3000/api/teacher/register`
 
 ### Register Admin
-**POST** `http://localhost:5000/api/admin/register`
+**POST** `http://localhost:3000/api/admin/register`
 
 ---
 
 ## 🔐 Login Endpoints
 
 ### Student Login
-**POST** `http://localhost:5000/api/student/login`
+**POST** `http://localhost:3000/api/student/login`
 ```json
 {
-  "email": "student1@acadify.com",
+  "enrollmentNumber": "2024CS001",
   "password": "Student@123"
 }
 ```
 
 ### Teacher Login
-**POST** `http://localhost:5000/api/teacher/login`
+**POST** `http://localhost:3000/api/teacher/login`
 ```json
 {
   "email": "rajesh.kumar@acadify.com",
@@ -163,7 +163,7 @@
 ```
 
 ### Admin Login
-**POST** `http://localhost:5000/api/admin/login`
+**POST** `http://localhost:3000/api/admin/login`
 ```json
 {
   "email": "admin@acadify.com",
@@ -193,8 +193,8 @@
 
 ## 📌 Quick Login Reference
 
-| Role | Email | Password |
+| Role | Login field | Password |
 |------|-------|----------|
-| Student | student1@acadify.com | Student@123 |
+| Student | 2024CS001 | Student@123 |
 | Teacher | rajesh.kumar@acadify.com | Teacher@123 |
 | Admin | admin@acadify.com | Admin@123 |
