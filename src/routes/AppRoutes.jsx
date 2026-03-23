@@ -4,12 +4,18 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import StudentLayout from '../app/students/layout.jsx'
 import StudentDashboard from '../app/students/studentdashboard/StudentDashboard.jsx'
 import MyCourses from '../app/students/components/myCourses.jsx'
+import StudentCheckIn from '../app/students/components/CheckIn.jsx'
+import Assignments from '../app/students/components/assigment.jsx'
 import TeacherLayout from '../app/teachers/layout.jsx'
 import TeacherDashboard from '../app/teachers/teacherdashboard/TeacherDashboard.jsx'
+import TeacherAnalytics from '../app/teachers/components/TeacherAnalytics.jsx'
 import AttendancePortal from '../app/teachers/components/AttendancePortal.jsx'
 import Login from '../app/auth/login/login.jsx'
 import AdminLayout from '../app/admin/layout.jsx'
 import AdminDashboard from '../app/admin/admindashboard/admin.jsx'
+import AnalyticsDashboard from '../app/admin/components/AnalyticsDashboard.jsx'
+import AdminUsers from '../app/admin/components/AdminUsers.jsx'
+import AdminSystem from '../app/admin/components/AdminSystem.jsx'
 import ProtectedRoute from '../component/ProtectedRoute.jsx'
 
 const AppRoutes = () => {
@@ -29,6 +35,10 @@ const AppRoutes = () => {
           }
         >
           <Route index element={<AdminDashboard />} />
+          <Route path="attendance" element={<AttendancePortal />} />
+          <Route path="analytics" element={<AnalyticsDashboard />} />
+          <Route path="users" element={<AdminUsers />} />
+          <Route path="system" element={<AdminSystem />} />
         </Route>
 
         {/* Student Routes - Only accessible by students */}
@@ -41,7 +51,9 @@ const AppRoutes = () => {
           }
         >
           <Route index element={<StudentDashboard />} />
+          <Route path="checkin" element={<StudentCheckIn />} />
           <Route path="courses" element={<MyCourses />} />
+          <Route path="assignments" element={<Assignments />} />
         </Route>
 
         {/* Teacher Routes - Only accessible by teachers */}
@@ -54,14 +66,16 @@ const AppRoutes = () => {
           }
         >
           <Route index element={<TeacherDashboard />} />
+          <Route path="attendance" element={<AttendancePortal />} />
+          <Route path="analytics" element={<TeacherAnalytics />} />
         </Route>
 
-        {/* Attendance Portal - Protected route */}
+        {/* Backward compatible redirect */}
         <Route
           path="/attendance"
           element={
             <ProtectedRoute allowedRoles={['teacher']}>
-              <AttendancePortal />
+              <Navigate to="/teacher/attendance" replace />
             </ProtectedRoute>
           }
         />
