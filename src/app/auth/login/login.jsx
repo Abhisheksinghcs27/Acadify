@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { FaGraduationCap, FaEnvelope, FaLock, FaUser, FaChalkboardTeacher, FaShieldAlt, FaIdCard } from 'react-icons/fa'
+import { FaGraduationCap, FaEnvelope, FaLock, FaUser, FaChalkboardTeacher, FaShieldAlt, FaIdCard, FaInfoCircle } from 'react-icons/fa'
 import { useLoginForm } from './hooks/personal/useLoginForm'
 import { USER_ROLES } from '../../../types'
 
@@ -41,6 +41,12 @@ const Login = () => {
 
     const handleOAuthLogin = () => {
         alert('OAuth 2.0 authentication coming soon!');
+    }
+
+    const demoCredentials = {
+        student: { enrollment: 'CS2023001', password: 'Student@123' },
+        teacher: { email: 'sarah.johnson@college.com', password: 'Teacher@123' },
+        admin: { email: 'dean@college.com', password: 'Admin@123' },
     }
 
     return (
@@ -228,6 +234,47 @@ const Login = () => {
                             </div>
                         </div>
                     )}
+
+                    <details className="mt-3 rounded-lg border border-blue-100 bg-blue-50/60 text-left">
+                        <summary className="cursor-pointer px-3 py-2.5 text-xs font-medium text-blue-800 flex items-center gap-2 select-none">
+                            <FaInfoCircle className="text-blue-600 shrink-0" aria-hidden />
+                            <span>View demo login details</span>
+                        </summary>
+                        <div className="px-3 pb-3 pt-0 space-y-2.5 text-xs text-gray-700 border-t border-blue-100/80">
+                            <p className="text-[11px] text-gray-500 pt-2">
+                                Sample accounts from the test seed data. Use <span className="font-mono">Email/Password</span> above.
+                            </p>
+                            <div className="rounded-md bg-white/80 p-2.5 border border-gray-100 space-y-2">
+                                <div>
+                                    <p className="font-semibold text-gray-800 mb-0.5">Student</p>
+                                    <p><span className="text-gray-500">Enrollment</span>{' '}
+                                        <span className="font-mono text-gray-900">{demoCredentials.student.enrollment}</span>
+                                    </p>
+                                    <p><span className="text-gray-500">Password</span>{' '}
+                                        <span className="font-mono text-gray-900">{demoCredentials.student.password}</span>
+                                    </p>
+                                </div>
+                                <div className="border-t border-gray-100 pt-2">
+                                    <p className="font-semibold text-gray-800 mb-0.5">Teacher</p>
+                                    <p><span className="text-gray-500">Email</span>{' '}
+                                        <span className="font-mono text-[11px] break-all text-gray-900">{demoCredentials.teacher.email}</span>
+                                    </p>
+                                    <p><span className="text-gray-500">Password</span>{' '}
+                                        <span className="font-mono text-gray-900">{demoCredentials.teacher.password}</span>
+                                    </p>
+                                </div>
+                                <div className="border-t border-gray-100 pt-2">
+                                    <p className="font-semibold text-gray-800 mb-0.5">Admin</p>
+                                    <p><span className="text-gray-500">Email</span>{' '}
+                                        <span className="font-mono text-[11px] break-all text-gray-900">{demoCredentials.admin.email}</span>
+                                    </p>
+                                    <p><span className="text-gray-500">Password</span>{' '}
+                                        <span className="font-mono text-gray-900">{demoCredentials.admin.password}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
 
                 {/* Footer Security Note */}

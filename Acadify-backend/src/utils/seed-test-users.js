@@ -44,7 +44,8 @@ const testUsers = {
             lastName: 'Johnson',
             department: 'Mathematics',
             subject: 'Advanced Mathematics',
-            phoneNumber: '9876543210'
+            phoneNumber: '9876543210',
+            employeeId: 'TCH001'
         },
         {
             email: 'michael.brown@college.com',
@@ -53,7 +54,8 @@ const testUsers = {
             lastName: 'Brown',
             department: 'Physics',
             subject: 'Physics Laboratory',
-            phoneNumber: '9876543211'
+            phoneNumber: '9876543211',
+            employeeId: 'TCH002'
         },
         {
             email: 'emily.wilson@college.com',
@@ -62,7 +64,8 @@ const testUsers = {
             lastName: 'Wilson',
             department: 'Chemistry',
             subject: 'Chemistry Fundamentals',
-            phoneNumber: '9876543212'
+            phoneNumber: '9876543212',
+            employeeId: 'TCH003'
         },
         {
             email: 'robert.kim@college.com',
@@ -71,7 +74,8 @@ const testUsers = {
             lastName: 'Kim',
             department: 'Computer Science',
             subject: 'Computer Science Basics',
-            phoneNumber: '9876543213'
+            phoneNumber: '9876543213',
+            employeeId: 'TCH004'
         },
         {
             email: 'amanda.clark@college.com',
@@ -80,7 +84,8 @@ const testUsers = {
             lastName: 'Clark',
             department: 'English',
             subject: 'English Literature',
-            phoneNumber: '9876543214'
+            phoneNumber: '9876543214',
+            employeeId: 'TCH005'
         }
     ],
     students: [
@@ -162,7 +167,7 @@ const testUsers = {
 async function seedUsers() {
     try {
         console.log('🔌 Connecting to MongoDB...');
-        await mongoose.connect(process.env.MONGODB_URI);
+        await mongoose.connect(process.env.MONGO_URI || process.env.MONGODB_URI);
         console.log('✅ Connected to MongoDB\n');
 
         // Seed Admins

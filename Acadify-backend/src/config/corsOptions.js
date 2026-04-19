@@ -1,18 +1,32 @@
 // config/corsOptions.js
-const allowedOrigins = [
-    'http://localhost:3000',  // React dev server
-    'http://localhost:3001',  // Alternative port
-    'http://127.0.0.1:3000', // Localhost with IP
-    'http://localhost:5173', // Vite dev server
-    // Add other origins as needed for production
+import config from './environment.js';
+
+const defaultOrigins = [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:3001',
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'http://localhost:5174',
+    'http://127.0.0.1:5174',
 ];
+
+function splitOrigins(value) {
+    if (!value || typeof value !== 'string') return [];
+    return value.split(',').map((o) => o.trim()).filter(Boolean);
+}
+
+const fromEnv = splitOrigins(process.env.ALLOWED_ORIGINS);
+const corsOriginSingle = config.CORS_ORIGIN ? [config.CORS_ORIGIN] : [];
+const allowedOrigins = [...new Set([...defaultOrigins, ...fromEnv, ...corsOriginSingle])];
 
 export const corsOptions = {
     origin: (origin, callback) => {
-        // Allow requests with no origin (like mobile apps, curl, etc.)
+        // Allow requests with no origin (like mobile apps, curl, Postman, same-host proxy)
         if (!origin) return callback(null, true);
 
-        if (allowedOrigins.indexOf(origin) === -1) {
+        if (!allowedOrigins.includes(origin)) {
             const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
             return callback(new Error(msg), false);
         }

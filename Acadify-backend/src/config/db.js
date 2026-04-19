@@ -1,7 +1,7 @@
 // config/db.js
 import mongoose from "mongoose";
 import config from "./environment.js";
-const { MONGODB_URI } = config;
+const MONGODB_URI = process.env.MONGO_URI || config.MONGODB_URI;
 import logger from "../utils/logger.js";
 
 export async function connectDB() {

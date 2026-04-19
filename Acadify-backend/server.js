@@ -1,8 +1,8 @@
 import { createServer } from 'http';
+import config from './src/config/environment.js';
 import app from './src/app.js';
 import { connectDB } from './src/config/db.js';
 import { connectRedis } from './src/config/redis.js';
-import config from './src/config/environment.js';
 import logger from './src/utils/logger.js';
 // import SocketService from './src/services/socket.service.js';
 
